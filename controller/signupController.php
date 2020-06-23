@@ -30,8 +30,14 @@ function signup($post){
 	$data->password = $post['password'];
 	$data->password_confirm = $post['password_confirm'];
 
-	$user = new User ($data);
-	$user->createUser();
+	try {
+		$user = new User ($data);
+		$user->createUser();
+	}
+	catch (Exception $error){
+		$error_msg = $error->getMessage();
+		require('view/auth/signupView.php');
+	}
 
 	require('view/auth/loginView.php');
 
