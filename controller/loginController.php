@@ -36,17 +36,24 @@ function login( $post ) {
 
   $error_msg      = "Email ou mot de passe incorrect";
 
-  if( $userData && sizeof( $userData ) != 0 ):
-    if( $user->getPassword() == $userData['password'] ):
+  if ($userData['active']==0) {
+    $error_msg = "Your account is not yet active, you will find the activation link in your emails";
+    require('view/auth/loginView.php');
+  }
+  else {
+    if( $userData && sizeof( $userData ) != 0 ):
+      if( $user->getPassword() == $userData['password'] ):
 
-      // Set session
-      $_SESSION['user_id'] = $userData['id'];
+        // Set session
+        $_SESSION['user_id'] = $userData['id'];
 
-      header( 'location: index.php ');
+        header( 'location: index.php ');
+      endif;
     endif;
-  endif;
 
-  require('view/auth/loginView.php');
+    require('view/auth/loginView.php');
+  }
+  
 }
 
 /****************************

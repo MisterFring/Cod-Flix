@@ -33,12 +33,11 @@ function signup($post){
 	try {
 		$user = new User ($data);
 		$user->createUser();
+		require('view/auth/loginView.php');
 	}
 	catch (Exception $error){
 		$error_msg = $error->getMessage();
 		require('view/auth/signupView.php');
 	}
-
-	require('view/auth/loginView.php');
 
 }

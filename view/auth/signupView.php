@@ -17,12 +17,12 @@
 
             <div class="form-group">
               <label for="password">Mot de passe</label>
-              <input type="password" name="password" id="password" class="form-control" />
+              <input type="text" name="password" id="password" class="form-control" />
             </div>
 
             <div class="form-group">
               <label for="password_confirm">Confirmez votre mot de passe</label>
-              <input type="password" name="password_confirm" id="password_confirm" class="form-control" />
+              <input type="text" name="password_confirm" id="password_confirm" class="form-control" />
             </div>
 
             <div class="form-group">
