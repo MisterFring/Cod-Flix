@@ -7,7 +7,6 @@ require_once( 'model/user.php' );
 
 function contactPage() {
 
-	
 	require('view/contactView.php');
 
 }

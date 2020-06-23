@@ -50,7 +50,7 @@ function login( $post ) {
         header( 'location: index.php ');
       endif;
     endif;
-
+    $_SESSION['email'] = $userData['email'];
     require('view/auth/loginView.php');
   }
   

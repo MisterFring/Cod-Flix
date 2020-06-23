@@ -10,7 +10,7 @@ require_once( 'controller/contactController.php' );
 * ----- HANDLE ACTION -----
 ***************************/
 
-if ( isset( $_GET['action'] ) ):
+if ( isset( $_GET['action'] ) ){
 
   switch( $_GET['action']):
 
@@ -38,15 +38,20 @@ if ( isset( $_GET['action'] ) ):
     break;
 
   endswitch;
+}
+elseif (isset($_GET['media'])) {
+  
+  mediaSheet();
 
-else:
+}
+
+else {
 
   $user_id = isset( $_SESSION['user_id'] ) ? $_SESSION['user_id'] : false;
 
   if( $user_id ):
-    mediaPage();
-  else:
-    homePage();
+      mediaPage();
+    else:
+      homePage();
   endif;
-
-endif;
+}

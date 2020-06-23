@@ -153,8 +153,7 @@ function email($to, $key) {
    
   ----------------------
   This is an automatic email, please do not reply";
-   
-   
+
   mail($recipient, $subject, $content, $entete);
 }
 
@@ -185,9 +184,9 @@ function check_password($password) {
       return true;
   }
 }
-/***************************************
-* ------- GET USER ID BY HIS EMAIL (NO NEED TO USE ALL FIELS WITH GETUSERBYEMAIL) -------
-****************************************/
+/*****************************************************************************************
+* ------- GET USER ID BY HIS EMAIL (NO NEED TO USE ALL FIELDS WITH GETUSERBYEMAIL) -------
+*****************************************************************************************/
 function getIdByEmail($email){
 
   $pdo = init_db();
@@ -199,4 +198,19 @@ function getIdByEmail($email){
   $db = null;
 
   return $res['id'];
- }
+}
+/*******************************************
+* ------- SEND EMAIL TO THE PLATFORM -------
+********************************************/
+
+function emailPlatform($subject, $from, $content) {
+
+  $recipient = "pierre.decrock@gmail.com";
+  $subject =  $subject;
+  $entete = "From: ".$from."" ;
+   
+  // Le lien d'activation est composé du login(log) et de la clé(cle)
+  $content = $content;
+
+  mail($recipient, $subject, $content, $entete);
+}

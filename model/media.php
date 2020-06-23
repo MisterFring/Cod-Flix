@@ -118,3 +118,19 @@ class Media {
   }
 
 }
+
+  /***********************************
+  * -------- GET MEDIA BY ID --------
+  ***********************************/
+
+function getMediaById($id){
+
+  $pdo = init_db();
+  $requete = $pdo->prepare('SELECT * FROM media WHERE id = ?');
+
+  $requete->execute(array($id));
+  $res = $requete->fetch();
+  $db = null;
+
+  return $res;
+}
