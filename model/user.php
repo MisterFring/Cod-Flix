@@ -7,6 +7,7 @@ class User {
   protected $id;
   protected $email;
   protected $password;
+  protected $password_confirm;
 
   public function __construct( $user = null ) {
 
@@ -119,7 +120,7 @@ class User {
     $req  = $db->prepare( "SELECT * FROM user WHERE email = ?" );
     $req->execute( array( $this->getEmail() ));
 
-    // Close databse connection
+    // Close database connection
     $db   = null;
 
     return $req->fetch();
