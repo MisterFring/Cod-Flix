@@ -158,14 +158,16 @@ function email($to, $key) {
   mail($recipient, $subject, $content, $entete);
 }
 
-
+/***************************************
+* ------- REGEX ON PASSWORD -------
+****************************************/
 function check_password($password) {
 
   $error = '';
 
-  if( strlen($password ) < 8 ) $error .="Password too short !</br>";
+  if( strlen($password ) < 8 ) $error .="Password too short (< 8)!</br>";
 
-  if( strlen($password ) > 20 ) $error.= "Password too long !</br>";
+  if( strlen($password ) > 20 ) $error.= "Password too long (< 20)!</br>";
 
   if( !preg_match("#[0-9]+#", $password ) ) $error.= "Password must include at least one number !</br>";
 
@@ -183,6 +185,9 @@ function check_password($password) {
       return true;
   }
 }
+/***************************************
+* ------- GET USER ID BY HIS EMAIL (NO NEED TO USE ALL FIELS WITH GETUSERBYEMAIL) -------
+****************************************/
 function getIdByEmail($email){
 
   $pdo = init_db();

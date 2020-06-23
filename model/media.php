@@ -102,5 +102,19 @@ class Media {
     return $req->fetchAll();
 
   }
+  public static function getMedia() {
+
+    // Open database connection
+    $db   = init_db();
+
+    $req  = $db->query( "SELECT * FROM media");
+    $req->execute();
+
+    // Close databse connection
+    $db   = null;
+
+    return $req->fetchAll();
+
+  }
 
 }

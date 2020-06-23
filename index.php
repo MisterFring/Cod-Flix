@@ -4,6 +4,7 @@ require_once( 'controller/homeController.php' );
 require_once( 'controller/loginController.php' );
 require_once( 'controller/signupController.php' );
 require_once( 'controller/mediaController.php' );
+require_once( 'controller/contactController.php' );
 
 /**************************
 * ----- HANDLE ACTION -----
@@ -25,6 +26,10 @@ if ( isset( $_GET['action'] ) ):
       else signupPage();
 
     break;
+
+    case 'contact':
+      contactPage();
+      break;
 
     case 'logout':
 

@@ -1,4 +1,7 @@
-<?php ob_start(); ?>
+<?php ob_start();
+require_once( 'model/user.php' );
+?>
+
 
 <div class="row">
     <div class="col-md-4 offset-md-8">
@@ -14,12 +17,16 @@
 </div>
 
 <div class="media-list">
-    <?php foreach( $medias as $media ): ?>
+    <?php
+    foreach( $medias as $media ):
+        ?>
         <a class="item" href="index.php?media=<?= $media['id']; ?>">
             <div class="video">
                 <div>
                     <iframe allowfullscreen="" frameborder="0"
-                            src="<?= $media['trailer_url']; ?>" ></iframe>
+                            src="<?= $media['trailer_url']; ?>" >
+                                
+                    </iframe>
                 </div>
             </div>
             <div class="title"><?= $media['title']; ?></div>
