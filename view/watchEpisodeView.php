@@ -2,6 +2,7 @@
 require_once 'model/media.php';
 $id = $_GET['episode'];
 $video = getVideo($id);
+insertOrUpdateEpisodeIntoHistory($_SESSION['user_id'], $id);
 ?>
 <style type="text/css">
 

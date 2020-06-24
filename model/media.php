@@ -211,10 +211,21 @@ function getVideo($id){
 /*******************************************************
 * ----------------- GET USER HISTORY -------------------
 ********************************************************/
-function getHistory($id_user){
+function getHistoryFilm($id_user){
 
   $pdo = init_db();
-  $requete = $pdo->prepare('SELECT * FROM history WHERE user_id = ?');
+  $requete = $pdo->prepare('SELECT * FROM history WHERE user_id = ? AND media_id IS NOT NULL');
+  $requete->execute(array($id_user));
+  $res = $requete->fetchAll();
+  $db = null;
+
+  return $res;
+
+}
+function getHistorySeries($id_user){
+
+  $pdo = init_db();
+  $requete = $pdo->prepare('SELECT * FROM history WHERE user_id = ? AND episode_id IS NOT NULL');
   $requete->execute(array($id_user));
   $res = $requete->fetchAll();
   $db = null;
@@ -224,7 +235,7 @@ function getHistory($id_user){
 }
 
 /***************************************************************************************
-* ----------------- INSERT OR UPDATE DATA HISTORY INTO HISTORY TABLE -------------------
+* ----------------- INSERT OR UPDATE DATA HISTORY INTO HISTORY TABLE FOR FILMS-------------------
 ****************************************************************************************/
 function insertOrUpdateIntoHistory($user_id, $media_id){
   $update;
@@ -266,6 +277,54 @@ function insertOrUpdateIntoHistory($user_id, $media_id){
   $db = null;
   
 }
+/***************************************************************************************
+* ----------------- INSERT OR UPDATE DATA HISTORY INTO HISTORY TABLE FOR SERIES --------
+****************************************************************************************/
+function insertOrUpdateEpisodeIntoHistory($user_id, $episode_id){
+  $update;
+  $pdo = init_db();
+
+  $req  = $pdo->prepare( "SELECT id FROM history WHERE user_id = :user AND episode_id = :id" );
+  $req->execute( array(
+    'user' => $user_id,
+    'id'=> $episode_id
+  ));
+  if ( $req->rowCount() > 0 ) {
+    $update = true;
+    $res = $req->fetch();
+    $res_id = $res['id'];
+  }
+  else {
+    $update = false;
+  }
+  $req->closeCursor();
+
+
+  if ($update == true) {
+    $requete = $pdo->prepare("UPDATE history SET start_date = :start WHERE id = :id");
+    $requete->execute( array(
+      'start'=> date("Y-m-d H:i:s"),
+      'id' => $res_id
+    ));
+  }
+  else {
+    $requete = $pdo->prepare("INSERT INTO history (user_id, episode_id, start_date)VALUES (:id, :episode, :start)");
+    $requete->execute( array(
+      'id'     => $user_id,
+      'episode'  => $episode_id,
+      'start' => date("Y-m-d H:i:s")
+    ));
+  }
+
+
+  $db = null;
+
+}
+
+
+
+
+
 /**********************************************************************
 * ----------------- DELETE 1 ROW IN  HISTORY TABLE -------------------
 **********************************************************************/
@@ -280,7 +339,9 @@ function deleteRow($idRow){
   header('Location: http://localhost:8888/Cod-Flix/index.php?action=history');
 
 }
-
+/**********************************************************
+* ----------------- DELETE ALL HISTORY -------------------
+***********************************************************/
 function deleteHistory($idUser){
   $pdo = init_db();
 
