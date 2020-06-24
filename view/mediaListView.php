@@ -54,10 +54,7 @@ else {
         <a class="item" href="index.php?season=<?= $season['id']; ?>">
             <div class="video">
                 <div>
-                    <iframe allowfullscreen="" frameborder="0"
-                            src="<?= $season['picture']; ?>" >
-                                
-                    </iframe>
+                    <img src="<?= $season['picture']; ?>" class="img-fluid" alt="Responsive image">
                 </div>
             </div>
             <div class="title"><?= $season['title']; ?></div>

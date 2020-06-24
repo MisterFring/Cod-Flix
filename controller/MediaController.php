@@ -37,3 +37,7 @@ function mediaSheet(){
 function seasonPage(){
 	require("view/episodesView.php");
 }
+
+function watchEpisode(){
+	require("view/watchEpisodeView.php");
+}

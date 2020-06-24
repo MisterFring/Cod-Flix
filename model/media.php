@@ -195,4 +195,17 @@ function getSeasonTitle($id){
   return $res;
 }
 
+/*******************************************************
+* -------- GET YOUTUBE URL OF THE EPISODE --------
+********************************************************/
+function getVideo($id){
+  $pdo = init_db();
+  $requete = $pdo->prepare('SELECT url FROM episodes WHERE id = ?');
+  $requete->execute(array($id));
+  $res = $requete->fetch();
+  $db = null;
+
+  return $res['url'];
+}
+
 

@@ -59,6 +59,11 @@ elseif (isset($_GET['season'])) {
   seasonPage();
 
 }
+elseif (isset($_GET['episode'])) {
+  
+  watchEpisode();
+
+}
 
 else {
 

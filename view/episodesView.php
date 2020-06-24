@@ -5,10 +5,10 @@ require_once 'model/media.php';
 
 $episodes = getEpisodes($_GET['season']);
 
-$season_detais = getSeasonTitle($_GET['season']);
+$season_details = getSeasonTitle($_GET['season']);
 
-$season_title = $season_detais['title'];
-$media_id = $season_detais['media_id'];
+$season_title = $season_details['title'];
+$media_id = $season_details['media_id'];
 
 $media_title = getMediaById($media_id)['title'];
 
@@ -28,12 +28,15 @@ $media_title = getMediaById($media_id)['title'];
 	  </thead>
 	  <tbody>
 	  	<?php foreach ($episodes as $episode) {?>
-	    <tr>
-			<th scope="row"><?= $episode['id'] ?></th>
-			<td><?= $episode['title'] ?></td>
-			<td><?= $episode['summary'] ?></td>
-			<td><?= $episode['duration'] ?></td>
-	    </tr>
+	  		<tr>
+				<th scope="row"><?= $episode['id'] ?></th>
+				<td><?= $episode['title'] ?></td>
+				<td><?= $episode['summary'] ?></td>
+				<td><?= $episode['duration'] ?><br><button><a href="index.php?episode=<?= $episode['id']; ?>">Stream</a></button></td>
+
+	    	</tr>
+	    	
+	  	<!-- </a> -->
 	    <?php } ?>
 	  </tbody>
 	</table>
