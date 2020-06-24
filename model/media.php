@@ -93,7 +93,7 @@ class Media {
     // Open database connection
     $db   = init_db();
 
-    $req  = $db->prepare( "SELECT * FROM media WHERE title = ? ORDER BY release_date DESC" );
+    $req  = $db->prepare( "SELECT * FROM media WHERE title LIKE ? ORDER BY release_date DESC" );
     $req->execute( array( '%' . $title . '%' ));
 
     // Close databse connection
@@ -119,9 +119,9 @@ class Media {
 
 }
 
-  /***********************************
-  * -------- GET MEDIA BY ID --------
-  ***********************************/
+/***********************************
+* -------- GET MEDIA BY ID --------
+***********************************/
 
 function getMediaById($id){
 
@@ -134,13 +134,37 @@ function getMediaById($id){
 
   return $res;
 }
+/********************************
+* -------- COMPARE DATE --------
+********************************/
 function available($release){
   $date_now = date('Y-m-d');
-  // if ($release < $date_now) {
-  //   return true;
-  // }
-  // else {
-  //   return false;
-  // }
   return ($date_now >= $release) ? true : false;
+}
+/**********************************************************
+* -------- KNOW IF THE MEDIA IS A FILM OR A SERIES --------
+***********************************************************/
+function typeOfMedia($id){
+  $pdo = init_db();
+  $requete = $pdo->prepare('SELECT type FROM media WHERE id = ?');
+
+  $requete->execute(array($id));
+  $res = $requete->fetch();
+  $db = null;
+
+  return $res['type'];
+}
+
+/*******************************************************
+* -------- GET SEASONS AND PICTURE OF A SERIES --------
+********************************************************/
+function getSeasons($id){
+  $pdo = init_db();
+  $requete = $pdo->prepare('SELECT * FROM season WHERE media_id = ?');
+
+  $requete->execute(array($id));
+  $res = $requete->fetchAll();
+  $db = null;
+
+  return $res;
 }

@@ -13,18 +13,23 @@ function mediaPage() {
 	if (isset($_GET['title'])) {
 		$search = $_GET['title'];
 		$medias = Media::filterMedias( $search );
-		require('view/mediaListView.php');
 	}
 	else {
 		//appeler tous les medias
 		$medias = Media::getMedia();
-		require('view/mediaListView.php');
 	}
+	require('view/mediaListView.php');
 	
 
 }
 
 
 function mediaSheet(){
-	require("view/mediaSheetView.php");
+	$type = typeOfMedia($_GET['media']);
+	if ($type == 'series') {
+		require('view/mediaListView.php');
+	}
+	else {
+		require("view/mediaSheetView.php");
+	}
 }

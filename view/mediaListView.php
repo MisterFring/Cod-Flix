@@ -1,8 +1,8 @@
 <?php ob_start();
 require_once( 'model/media.php' );
+
+if (!isset($_GET['media'])) {
 ?>
-
-
 <div class="row">
     <div class="col-md-4 offset-md-8">
         <form method="get">
@@ -34,14 +34,45 @@ require_once( 'model/media.php' );
                 <?php 
 
                     $available = available($media ['release_date']);
-                    ($available) ? $msg = "available since <br>" : $msg = "available on <br>";
-                        echo $msg;
+                    ($available) ? $msg = "Available since :<br>" : $msg = "Available on :<br>";
+                    echo $msg;
                 ?>
                 <?= $media ['release_date']?>
             </div>
         </a>
     <?php endforeach; ?>
 </div>
+<?php }
+else {
+    $res = getSeasons($_GET['media']);
+
+?>
+<h2><?= $res[0]['media_id'] ?></h2>
+<div class="media-list">
+    <?php
+    foreach( $res as $season ):
+        ?>
+        <a class="item" href="index.php?media=<?= $season['id']; ?>">
+            <div class="video">
+                <div>
+                    <iframe allowfullscreen="" frameborder="0"
+                            src="<?= $season['picture']; ?>" >
+                                
+                    </iframe>
+                </div>
+            </div>
+            <div class="title"><?= $season['title']; ?></div>
+        </a>
+    <?php endforeach; ?>
+</div>
+
+
+
+
+
+
+
+<?php } ?>
 
 
 <?php $content = ob_get_clean(); ?>
