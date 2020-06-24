@@ -32,7 +32,6 @@ if (!isset($_GET['media'])) {
             <div class="title"><?= $media['title']; ?></div>
             <div class="release_date">
                 <?php 
-
                     $available = available($media ['release_date']);
                     ($available) ? $msg = "Available since :<br>" : $msg = "Available on :<br>";
                     echo $msg;
@@ -47,12 +46,12 @@ else {
     $res = getSeasons($_GET['media']);
 
 ?>
-<h2><?= $res[0]['media_id'] ?></h2>
+<h3><?= getMediaById($res[0]['media_id'])['title'] ?></h3>
 <div class="media-list">
     <?php
     foreach( $res as $season ):
         ?>
-        <a class="item" href="index.php?media=<?= $season['id']; ?>">
+        <a class="item" href="index.php?season=<?= $season['id']; ?>">
             <div class="video">
                 <div>
                     <iframe allowfullscreen="" frameborder="0"

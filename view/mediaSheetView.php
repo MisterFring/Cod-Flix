@@ -28,6 +28,7 @@ $res = getMediaById($id);
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
 }
+
 </style>
 
 <section class="hea">

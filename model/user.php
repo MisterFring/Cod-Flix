@@ -209,7 +209,6 @@ function emailPlatform($subject, $from, $content) {
   $subject =  $subject;
   $entete = "From: ".$from."" ;
    
-  // Le lien d'activation est composé du login(log) et de la clé(cle)
   $content = $content;
 
   mail($recipient, $subject, $content, $entete);

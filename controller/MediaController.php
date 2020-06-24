@@ -33,3 +33,7 @@ function mediaSheet(){
 		require("view/mediaSheetView.php");
 	}
 }
+
+function seasonPage(){
+	require("view/episodesView.php");
+}

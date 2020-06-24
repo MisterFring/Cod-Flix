@@ -168,3 +168,31 @@ function getSeasons($id){
 
   return $res;
 }
+
+/*******************************************************
+* -------- GET EPISODES DETAILS OF A SEASON  --------
+********************************************************/
+function getEpisodes($id){
+  $pdo = init_db();
+  $requete = $pdo->prepare('SELECT * FROM episodes WHERE season_id = ?');
+
+  $requete->execute(array($id));
+  $res = $requete->fetchAll();
+  $db = null;
+
+  return $res;
+}
+/*******************************************************
+* -------- GET SEASONS TITLE --------
+********************************************************/
+function getSeasonTitle($id){
+  $pdo = init_db();
+  $requete = $pdo->prepare('SELECT title, media_id FROM season WHERE id = ?');
+  $requete->execute(array($id));
+  $res = $requete->fetch();
+  $db = null;
+
+  return $res;
+}
+
+

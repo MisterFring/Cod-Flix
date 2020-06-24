@@ -31,6 +31,10 @@ if ( isset( $_GET['action'] ) ){
       contactPage();
       break;
 
+    case 'contact_without_account':
+      contactPageWithoutAccount();
+      break;
+
     case 'logout':
 
       logout();
@@ -47,6 +51,12 @@ elseif (isset($_GET['media'])) {
 elseif (isset($_GET['title'])) {
   
   mediaPage();
+
+}
+
+elseif (isset($_GET['season'])) {
+  
+  seasonPage();
 
 }
 
