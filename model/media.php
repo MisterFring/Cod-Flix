@@ -208,4 +208,20 @@ function getVideo($id){
   return $res['url'];
 }
 
+/*******************************************************
+* ----------------- GET USER HISTORY -------------------
+********************************************************/
+function getHistory($id_user){
+
+  $pdo = init_db();
+  $requete = $pdo->prepare('SELECT * FROM history WHERE user_id = ?');
+  $requete->execute(array($id_user));
+  $res = $requete->fetchAll();
+  $db = null;
+
+  return $res;
+
+
+}
+
 

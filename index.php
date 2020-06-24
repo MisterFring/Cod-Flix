@@ -27,6 +27,10 @@ if ( isset( $_GET['action'] ) ){
 
     break;
 
+    case 'history':
+      history();
+      break;
+
     case 'contact':
       contactPage();
       break;

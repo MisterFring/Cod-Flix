@@ -41,3 +41,6 @@ function seasonPage(){
 function watchEpisode(){
 	require("view/watchEpisodeView.php");
 }
+function history(){
+	require('view/historyView.php');
+}

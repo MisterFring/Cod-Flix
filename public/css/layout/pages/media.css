@@ -25,6 +25,10 @@
 .media-list .item .video iframe {
     width: 100%;
 }
+.media-list .item .video img {
+    width: 100%;
+    max-width: 200px;
+}
 
 .media-list .item .title {
     color: #fff;
