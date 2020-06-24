@@ -40,8 +40,13 @@ if ( isset( $_GET['action'] ) ){
   endswitch;
 }
 elseif (isset($_GET['media'])) {
-  
+
   mediaSheet();
+
+}
+elseif (isset($_GET['title'])) {
+  
+  mediaPage();
 
 }
 

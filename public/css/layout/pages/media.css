@@ -33,6 +33,11 @@
     padding: 8px 20px;
     text-align: center;
 }
+.media-list .item .release_date {
+    color: #fff;
+    padding: 8px 20px;
+    text-align: center;
+}
 .media-list .item .title:after {
     content: "";
     display: block;

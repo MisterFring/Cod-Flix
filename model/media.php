@@ -134,3 +134,13 @@ function getMediaById($id){
 
   return $res;
 }
+function available($release){
+  $date_now = date('Y-m-d');
+  // if ($release < $date_now) {
+  //   return true;
+  // }
+  // else {
+  //   return false;
+  // }
+  return ($date_now >= $release) ? true : false;
+}

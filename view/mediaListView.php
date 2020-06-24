@@ -1,5 +1,5 @@
 <?php ob_start();
-require_once( 'model/user.php' );
+require_once( 'model/media.php' );
 ?>
 
 
@@ -30,6 +30,15 @@ require_once( 'model/user.php' );
                 </div>
             </div>
             <div class="title"><?= $media['title']; ?></div>
+            <div class="release_date">
+                <?php 
+
+                    $available = available($media ['release_date']);
+                    ($available) ? $msg = "available since <br>" : $msg = "available on <br>";
+                        echo $msg;
+                ?>
+                <?= $media ['release_date']?>
+            </div>
         </a>
     <?php endforeach; ?>
 </div>
