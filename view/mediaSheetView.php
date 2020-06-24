@@ -2,6 +2,9 @@
 require_once 'model/media.php';
 $id = $_GET['media'];
 $res = getMediaById($id);
+
+// PREFERE TAKING DATABASE DATA THAN USER DATE BY GET METHOD
+insertOrUpdateIntoHistory($_SESSION['user_id'], $res['id']);
 ?>
 <style type="text/css">
 

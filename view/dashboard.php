@@ -18,7 +18,7 @@
         <h2 class="title">Bienvenue</h2>
         <div class="sidebar-menu">
           <ul>
-            <li class="active"><a href="index.php">Médias</a></li>
+            <li><a href="index.php">Médias</a></li>
             <li><a href="index.php?action=history">Historique</a></li>
             <li><a href="index.php?action=contact">Nous contacter</a></li>
             <li><a href="index.php?action=logout">Me déconnecter</a></li>

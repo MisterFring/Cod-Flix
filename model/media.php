@@ -221,7 +221,77 @@ function getHistory($id_user){
 
   return $res;
 
+}
+
+/***************************************************************************************
+* ----------------- INSERT OR UPDATE DATA HISTORY INTO HISTORY TABLE -------------------
+****************************************************************************************/
+function insertOrUpdateIntoHistory($user_id, $media_id){
+  $update;
+  $pdo = init_db();
+
+  $req  = $pdo->prepare( "SELECT id FROM history WHERE user_id = :user AND media_id = :media" );
+  $req->execute( array(
+    'user' => $user_id,
+    'media'=> $media_id
+  ));
+  if ( $req->rowCount() > 0 ) {
+    $update = true;
+    $res = $req->fetch();
+    $res_id = $res['id'];
+  }
+  else {
+    $update = false;
+  }
+  $req->closeCursor();
+
+
+  if ($update == true) {
+    $requete = $pdo->prepare("UPDATE history SET start_date = :start WHERE id = :id");
+    $requete->execute( array(
+      'start'=> date("Y-m-d H:i:s"),
+      'id' => $res_id
+    ));
+  }
+  else {
+    $requete = $pdo->prepare("INSERT INTO history (user_id, media_id, start_date)VALUES (:id, :media, :start)");
+    $requete->execute( array(
+      'id'     => $user_id,
+      'media'  => $media_id,
+      'start' => date("Y-m-d H:i:s")
+    ));
+  }
+
+
+  $db = null;
+  
+}
+/**********************************************************************
+* ----------------- DELETE 1 ROW IN  HISTORY TABLE -------------------
+**********************************************************************/
+function deleteRow($idRow){
+  $pdo = init_db();
+
+  $requete = $pdo->prepare('DELETE FROM history WHERE id = ?');
+  $requete->execute(array($idRow));
+
+  $db = null;
+
+  header('Location: http://localhost:8888/Cod-Flix/index.php?action=history');
 
 }
+
+function deleteHistory($idUser){
+  $pdo = init_db();
+
+  $requete = $pdo->prepare('DELETE FROM history WHERE user_id = ?');
+  $requete->execute(array($idUser));
+
+  $db = null;
+
+  header('Location: http://localhost:8888/Cod-Flix/index.php?action=history');
+
+}
+
 
 

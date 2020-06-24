@@ -87,7 +87,7 @@ class User {
       'key_verif' => $key_verif,
       'active'    => 0
     ));
-    email($this->getEmail(), $test);
+    email($this->getEmail(), $key_verif);
 
     // Close databse connection
     $db = null;
@@ -131,9 +131,9 @@ class User {
   }
 }
 
-/***************************************
+/*****************************************************
 * ------- EMAIL USER TO CHECK HIS AUTHENTICITY -------
-****************************************/
+******************************************************/
 
 function email($to, $key) {
 

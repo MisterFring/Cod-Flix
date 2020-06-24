@@ -44,3 +44,10 @@ function watchEpisode(){
 function history(){
 	require('view/historyView.php');
 }
+function deleteHistoryRow($idRow){
+	deleteRow($idRow);
+}
+function deleteAllHistory(){
+	deleteHistory($_SESSION['user_id']);
+}
+?>

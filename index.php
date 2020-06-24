@@ -68,6 +68,16 @@ elseif (isset($_GET['episode'])) {
   watchEpisode();
 
 }
+elseif (isset($_GET['delete'])) {
+  
+  deleteHistoryRow($_GET['delete']);
+
+}
+elseif (isset($_GET['deleteAll'])) {
+  
+  deleteAllHistory();
+
+}
 
 else {
 
