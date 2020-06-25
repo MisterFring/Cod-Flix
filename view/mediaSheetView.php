@@ -34,6 +34,10 @@ insertOrUpdateIntoHistory($_SESSION['user_id'], $res['id']);
 
 </style>
 
+<div class="container-fluid">
+  <a href="<?= $_SERVER['HTTP_REFERER']; ?>"><button type="button" class="btn btn-secondary btn-lg btn-block">Retour à la liste</button></a>
+</div>
+
 <section class="hea">
 	<div class="overlay"></div>
 	<div class="video">
@@ -50,7 +54,7 @@ insertOrUpdateIntoHistory($_SESSION['user_id'], $res['id']);
     <div class="row">
       <div class="col-md-8 mx-auto">
         <h3><?= $res['title']?></h3>
-        <h4><?= $res['release_date'] ?></h4>
+        <h4>Sortie : <?= $res['release_date'] ?> - Durée : <?= transformSqlTimeInHhSs($res['duration']) ?></h4>
         <p><?= $res['summary']?></p>
       </div>
     </div>

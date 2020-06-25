@@ -20,7 +20,7 @@ $media_title = getMediaById($media_id)['title'];
 	<table class="table table-bordered table-hover">
 	  <thead class="thead-dark">
 	    <tr>
-	    	<th scope="col">#</th>
+	    	<th scope="col">Episode</th>
 			<th scope="col">Titre</th>
 			<th scope="col">Description</th>
 			<th scope="col">Durée</th>
@@ -32,7 +32,7 @@ $media_title = getMediaById($media_id)['title'];
 	  			<td><?= $episode['index_episode'] ?></td>
 				<td><?= $episode['title'] ?></td>
 				<td><?= $episode['summary'] ?></td>
-				<td><?= $episode['duration'] ?><br><button><a href="index.php?episode=<?= $episode['id']; ?>">Stream</a></button></td>
+				<td><?= transformSqlTimeInHhSs($episode['duration']) ?><br><button><a href="index.php?episode=<?= $episode['id']; ?>">Stream</a></button></td>
 
 	    	</tr>
 	    <?php } ?>

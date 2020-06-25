@@ -31,6 +31,7 @@ function signup($post){
 	$data->password_confirm = $post['password_confirm'];
 
 	try {
+		check_password($post['password']);
 		$user = new User ($data);
 		$user->createUser();
 		require('view/auth/loginView.php');

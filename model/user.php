@@ -14,7 +14,7 @@ class User {
     if( $user != null ):
       $this->setId( isset( $user->id ) ? $user->id : null );
       $this->setEmail( $user->email );
-      $this->setPassword( check_password($user->password), isset( $user->password_confirm ) ? $user->password_confirm : false );
+      $this->setPassword( $user->password, isset( $user->password_confirm ) ? $user->password_confirm : false );
     endif;
   }
 

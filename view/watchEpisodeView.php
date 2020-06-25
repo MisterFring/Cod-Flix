@@ -32,14 +32,18 @@ insertOrUpdateEpisodeIntoHistory($_SESSION['user_id'], $id);
 
 </style>
 
+<div class="container-fluid">
+  <a href="<?= $_SERVER['HTTP_REFERER']; ?>"><button type="button" class="btn btn-secondary btn-lg btn-block">Retour aux épisodes</button></a>
+</div>
+
+
+
 <section class="hea">
 	<div class="overlay"></div>
 	<div class="video">
-	    <div>
 	        <iframe allowfullscreen="" frameborder="0"
 	                src="<?= $video ?>">
 	        </iframe>
-	    </div>
 	</div>
 </section>
 

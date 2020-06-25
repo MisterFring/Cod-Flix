@@ -13,7 +13,7 @@ $historySeries = getHistorySeries($_SESSION['user_id']);
       <h2>Historique</h2>
     </div>
     <div class="col-sm">
-      <button class="btn btn-block bg-red"><a href="index.php?deleteAll">DELETE ALL</a></button>
+      <button class="btn btn-block bg-red"><a href="index.php?deleteAll">TOUT SUPPRIMER</a></button>
     </div>
   </div>
 </div>
@@ -39,7 +39,7 @@ $historySeries = getHistorySeries($_SESSION['user_id']);
 				<td><?= $value['start_date'] ?></td>
 				<!-- <td><?= $value['finish_date'] ?></td>
 				<td><?= $value['watch_duration'] ?></td> -->
-				<td><button class="btn btn-block bg-red"><a href="index.php?delete=<?= $value['id']; ?>">DELETE</a></button></td>
+				<td><button class="btn btn-block bg-red"><a href="index.php?delete=<?= $value['id']; ?>">Supprimer</a></button></td>
 
 	    	</tr>
 	    <?php } ?>
@@ -56,7 +56,7 @@ $historySeries = getHistorySeries($_SESSION['user_id']);
 	<table class="table table-bordered table-hover">
 	  <thead class="thead-dark">
 	    <tr>
-			<th scope="col">#Episode</th>
+			<th scope="col">Episode</th>
 			<th scope="col">Titre</th>
 			<th scope="col">Série</th>
 			<th scope="col">Saison</th>
@@ -83,7 +83,7 @@ $historySeries = getHistorySeries($_SESSION['user_id']);
 				<td><?= $val['start_date'] ?></td>
 				<!-- <td><?= $val['finish_date'] ?></td>
 				<td><?= $val['watch_duration'] ?></td> -->
-				<td><button class="btn btn-block bg-red"><a href="index.php?delete=<?= $val['id']; ?>">DELETE</a></button></td>
+				<td><button class="btn btn-block bg-red"><a href="index.php?delete=<?= $val['id']; ?>">Supprimer</a></button></td>
 
 	    	</tr>
 	    <?php } ?>

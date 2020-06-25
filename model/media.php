@@ -331,8 +331,16 @@ function insertOrUpdateEpisodeIntoHistory($user_id, $episode_id){
 
 }
 
-
-
+/**********************************************************************
+* ----------------- GET SQL TIME WITHOUT SECONDS -------------------
+**********************************************************************/
+function transformSqlTimeInHhSs($time) {
+   // $heure de la forme hh:mm:ss
+   // on enleve les secondes
+   $arrayHour = explode(':',$time);
+   $newTime = $arrayHour[0].'h'.$arrayHour[1];
+   return $newTime;
+}
 
 
 /**********************************************************************

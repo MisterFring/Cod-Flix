@@ -2,52 +2,54 @@
 
 require_once( '../model/user.php' );
 
-
+// ********************************************************************
+// RETRIEVE KEY & ID FIELD IN THE URL BY GET METHOD
 $login = $_GET['log'];
 $cle = $_GET['key'];
 
 $loginInteger = str_replace("'", "", $login);
-$cle = str_replace("'", "", $cle);
+$key = str_replace("'", "", $cle);
+// ********************************************************************
 
-// Récupération de la clé correspondant au $login dans la base de données
+
+// ********************************************************************
+// RETRIEVE KEY & ACTIVE FIELD IN DATABASE, CORRESPONDING TO THIS USER
+
 $db = init_db();
-
 $stmt = $db->prepare('SELECT key_verif, active FROM user WHERE id = ?');
-print_r($stmt);
 $stmt->execute(array($loginInteger));
 $row = $stmt->fetch();
 
-$test = $row['email'];
-$bdd_key = $row['key_verif'];    // Récupération de la clé
-$active = $row['active']; // $actif contiendra alors 0 ou 1
 
-  echo 'variable login'.$login.'<br>';
-  echo 'variable clé'.$cle.'<br>';
-  echo 'variable bddkey'.$bdd_key.'<br>';
-  echo 'variable active'.$active.'<br>';
+$bdd_key = $row['key_verif'];
+$active = $row['active'];
+
+// ********************************************************************
 
 
-// On teste la valeur de la variable $actif récupérée dans la BDD
+// WE TEST THE VARIABLE $ACTIVE
 
-if($active == '1'){ // Si le compte est déjà actif on prévient
+if($active == '1'){ // IF ACCOUNT ALREADY ACTIVE
   echo "Votre compte est déjà actif !";
+  ?><a href="http://localhost:8888/Cod-Flix/index.php?action=login"><button>GO</button></a><?php
 }
-  else // Si ce n'est pas le cas on passe aux comparaisons
+  else
   {
-    if($cle == $bdd_key) // On compare nos deux clés    
+    if($key == $bdd_key) // COMPARE GET KEY AND DATABASE KEY    
     {
-      // Si elles correspondent on active le compte !    
+      // ACCOUNT ACTIVATION    
       echo "Votre compte a bien été activé !";
 
-      // La requête qui va passer notre champ actif de 0 à 1
       $stmt = $db->prepare("UPDATE user SET active = 1 WHERE id = :id ");
       $stmt->bindParam(':id', $loginInteger);
       $stmt->execute();
-      // $dbh = null;
+
+      ?><a href="http://localhost:8888/Cod-Flix/index.php?action=login"><button>GO</button></a><?php;
     }
-    else // Si les deux clés sont différentes on provoque une erreur...
+    else // IF KEYS ARE DIFFERENT
     {
-    echo "Erreur ! Votre compte ne peut être activé...";
+    echo "Erreur ! Votre compte ne peut être activé... Problème d'authentification";
+    ?><a href="http://localhost:8888/Cod-Flix/index.php?action=signup"><button>GO SIGN UP</button></a><?php
     }
   }
 ?>

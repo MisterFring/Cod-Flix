@@ -1,6 +1,11 @@
 <?php ob_start();
 require_once( 'model/media.php' );
 
+/********************************************
+* ----- 2 ways to get here, either by "home", 
+or by clicking on a media being a series ---
+*********************************************/
+
 if (!isset($_GET['media'])) {
 ?>
 <div class="row">
@@ -29,16 +34,29 @@ if (!isset($_GET['media'])) {
             </div>
             <div class="title"><?= $media['title']; ?></div>
             <div class="release_date">
-                <?php 
-                    $available = available($media ['release_date']);
-                    ($available) ? $msg = "Available since :<br>" : $msg = "Available on :<br>";
-                    echo $msg;
+                <?php
+                    if ($media['type']=='film') {
+                        $available = available($media ['release_date']);
+                        ($available) ? $msg = "Disponible depuis :<br>" : $msg = "Disponible le :<br>";
+                        echo $msg . $media ['release_date'] ;
+                    }
+                    else {
+                        $fetchSeasons = getSeasons($media['id']);
+                        $numberOfSeasons = count($fetchSeasons);
+                        echo ($numberOfSeasons > 1 ) ? ($numberOfSeasons.' Saisons') : $numberOfSeasons.' Saison';
+                        ;
+                    }
                 ?>
-                <?= $media ['release_date']?>
             </div>
         </a>
     <?php endforeach; ?>
 </div>
+
+
+<!-- ************************* -->
+<!-- IF WE CLICKED ON A SERIES -->
+<!-- ************************* -->
+
 <?php }
 else {
     $res = getSeasons($_GET['media']);
