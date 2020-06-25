@@ -15,8 +15,11 @@ $media_title = getMediaById($media_id)['title'];
 // **********************************//
 
 ?>
-<h3><?= $media_title ?> - <?= $season_title ?></h3>
-<div class="container table-responsive py-5"> 
+<div class="container-fluid">
+  <a href="<?= $_SERVER['HTTP_REFERER']; ?>"><button type="button" class="btn btn-secondary btn-lg btn-block">Retour</button></a>
+</div>
+<div class="container table-responsive py-5">
+	<h3><?= $media_title ?> - <?= $season_title ?></h3>
 	<table class="table table-bordered table-hover">
 	  <thead class="thead-dark">
 	    <tr>

@@ -224,7 +224,7 @@ function getVideo($id){
 function getHistoryFilm($id_user){
 
   $pdo = init_db();
-  $requete = $pdo->prepare('SELECT * FROM history WHERE user_id = ? AND media_id IS NOT NULL');
+  $requete = $pdo->prepare('SELECT * FROM history WHERE user_id = ? AND media_id IS NOT NULL ORDER BY start_date DESC');
   $requete->execute(array($id_user));
   $res = $requete->fetchAll();
   $db = null;
@@ -235,7 +235,7 @@ function getHistoryFilm($id_user){
 function getHistorySeries($id_user){
 
   $pdo = init_db();
-  $requete = $pdo->prepare('SELECT * FROM history WHERE user_id = ? AND episode_id IS NOT NULL');
+  $requete = $pdo->prepare('SELECT * FROM history WHERE user_id = ? AND episode_id IS NOT NULL ORDER BY start_date DESC');
   $requete->execute(array($id_user));
   $res = $requete->fetchAll();
   $db = null;

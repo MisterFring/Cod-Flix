@@ -62,7 +62,10 @@ else {
     $res = getSeasons($_GET['media']);
 
 ?>
-<h3><?= getMediaById($res[0]['media_id'])['title'] ?></h3>
+<div class="container-fluid">
+  <a href="<?= $_SERVER['HTTP_REFERER']; ?>"><button type="button" class="btn btn-secondary btn-lg btn-block">Retour</button></a>
+</div>
+<h3 id="hea"><?= getMediaById($res[0]['media_id'])['title'] ?></h3>
 <div class="media-list">
     <?php
     foreach( $res as $season ):

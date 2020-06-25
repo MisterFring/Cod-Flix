@@ -1,7 +1,14 @@
 /**********
 * Auth pages rules
 **********/
-
+#verif{
+  height:15px;
+  width:70%;
+  background-color:grey;
+  margin: auto;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
 .auth-container {
   display: flex;
   flex-direction: column;

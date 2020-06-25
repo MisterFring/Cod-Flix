@@ -164,17 +164,17 @@ function check_password($password) {
 
   $error = '';
 
-  if( strlen($password ) < 8 ) $error .="Password too short (< 8)!</br>";
+  if( strlen($password ) < 8 ) $error .="Mot de passe trop petit (< 8 caractères) !<br>";
 
-  if( strlen($password ) > 20 ) $error.= "Password too long (< 20)!</br>";
+  if( strlen($password ) > 20 ) $error.= "Mot de passe trop long (> 20 caractères) !<br>";
 
-  if( !preg_match("#[0-9]+#", $password ) ) $error.= "Password must include at least one number !</br>";
+  if( !preg_match("#[0-9]+#", $password ) ) $error.= "Doit contenir au moins un chiffre !<br>";
 
-  if( !preg_match("#[a-z]+#", $password ) ) $error.= "Password must include at least one letter !</br>";
+  if( !preg_match("#[a-z]+#", $password ) ) $error.= "Doit contenir au moins une minuscule !<br>";
 
-  if( !preg_match("#[A-Z]+#", $password ) ) $error.= "Password must include at least one CAPS !</br>" ;
+  if( !preg_match("#[A-Z]+#", $password ) ) $error.= "Doit contenir au moins une majuscule !<br>" ;
 
-  if( !preg_match("#\W+#", $password ) ) $error.="Password must include at least one symbol !";
+  if( !preg_match("#\W+#", $password ) ) $error.="Doit contenir au moins un caractère spécial (@,#,...) !";
 
   if ($error != '') {
     throw new Exception($error);

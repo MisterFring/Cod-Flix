@@ -15,12 +15,14 @@ Nothing else is required. You can now start your development
 Email : coding@gmail.com
 Password : Coding@123
 
-I implemented regex on the password for security, a password need :
+I implemented regex (PHP)on the password for security, a password need :
 	- between 8 and 20 characters
 	- an uppercase letter
 	- a lowercase
 	- a number
 	- a symbol
+
+There is the same control on client side with a JS Script.
 
 
 

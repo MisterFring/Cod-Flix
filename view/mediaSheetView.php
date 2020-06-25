@@ -6,36 +6,9 @@ $res = getMediaById($id);
 // PREFERE TAKING DATABASE DATA THAN USER DATE BY GET METHOD
 insertOrUpdateIntoHistory($_SESSION['user_id'], $res['id']);
 ?>
-<style type="text/css">
-
-.hea {
-  position: relative;
-  background-color: black;
-  height: 75vh;
-  min-height: 25rem;
-  width: 100%;
-  overflow: hidden;
-}
-
-.hea iframe {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  z-index: 0;
-  -ms-transform: translateX(-50%) translateY(-50%);
-  -moz-transform: translateX(-50%) translateY(-50%);
-  -webkit-transform: translateX(-50%) translateY(-50%);
-  transform: translateX(-50%) translateY(-50%);
-}
-
-</style>
 
 <div class="container-fluid">
-  <a href="<?= $_SERVER['HTTP_REFERER']; ?>"><button type="button" class="btn btn-secondary btn-lg btn-block">Retour à la liste</button></a>
+  <a href="<?= $_SERVER['HTTP_REFERER']; ?>"><button id="return_button" type="button" class="btn btn-secondary btn-lg btn-block">Retour à la liste</button></a>
 </div>
 
 <section class="hea">
