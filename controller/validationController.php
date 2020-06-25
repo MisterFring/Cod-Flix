@@ -30,26 +30,25 @@ $active = $row['active'];
 // WE TEST THE VARIABLE $ACTIVE
 
 if($active == '1'){ // IF ACCOUNT ALREADY ACTIVE
-  echo "Votre compte est déjà actif !";
-  ?><a href="http://localhost:8888/Cod-Flix/index.php?action=login"><button>GO</button></a><?php
+  header('Refresh:5;url= http://localhost:8888/Cod-Flix/index.php?action=login');
+  echo "<div style='border:1px dotted black;margin-top:20%;'><p style='text-align:center;'>Votre compte est déjà actif</p></div>";
 }
-  else
+else {
+  if($key == $bdd_key) // COMPARE GET KEY AND DATABASE KEY    
   {
-    if($key == $bdd_key) // COMPARE GET KEY AND DATABASE KEY    
-    {
-      // ACCOUNT ACTIVATION    
-      echo "Votre compte a bien été activé !";
+    // ACCOUNT ACTIVATION    
+    echo "Votre compte a bien été activé !";
 
-      $stmt = $db->prepare("UPDATE user SET active = 1 WHERE id = :id ");
-      $stmt->bindParam(':id', $loginInteger);
-      $stmt->execute();
+    $stmt = $db->prepare("UPDATE user SET active = 1 WHERE id = :id ");
+    $stmt->bindParam(':id', $loginInteger);
+    $stmt->execute();
 
-      ?><a href="http://localhost:8888/Cod-Flix/index.php?action=login"><button>GO</button></a><?php;
-    }
-    else // IF KEYS ARE DIFFERENT
-    {
-    echo "Erreur ! Votre compte ne peut être activé... Problème d'authentification";
-    ?><a href="http://localhost:8888/Cod-Flix/index.php?action=signup"><button>GO SIGN UP</button></a><?php
-    }
+    ?><button type="button" class="btn btn-danger btn-lg btn-block"><a href="http://localhost:8888/Cod-Flix/index.php?action=login">GO</a></button><?php
   }
+  else // IF KEYS ARE DIFFERENT
+  {
+    echo "Erreur ! Votre compte ne peut être activé... Problème d'authentification";
+    ?><button type="button" class="btn btn-danger btn-lg btn-block"><a href="http://localhost:8888/Cod-Flix/index.php?action=signup">GO SIGN UP</a></button><?php
+  }
+}
 ?>

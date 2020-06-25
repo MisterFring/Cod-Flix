@@ -286,6 +286,7 @@ function insertOrUpdateIntoHistory($user_id, $media_id){
 
   $db = null;
   
+  
 }
 /***************************************************************************************
 * ----------------- INSERT OR UPDATE DATA HISTORY INTO HISTORY TABLE FOR SERIES --------

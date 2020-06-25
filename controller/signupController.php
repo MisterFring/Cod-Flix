@@ -34,7 +34,9 @@ function signup($post){
 		check_password($post['password']);
 		$user = new User ($data);
 		$user->createUser();
-		require('view/auth/loginView.php');
+		header('Refresh:5;url= http://localhost:8888/Cod-Flix/index.php?action=login');
+		echo "<div style='border:1px dotted black;margin-top:20%;'><p style='text-align:center;'>Un mail de confirmation contenant un lien d'activation de votre compte vient d'être envoyé sur votre email</p></div>";
+		//require('view/auth/loginView.php');
 	}
 	catch (Exception $error){
 		$error_msg = $error->getMessage();

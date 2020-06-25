@@ -61,5 +61,7 @@ Separation of history between films and series.
 
 If the user clicks on a media he has already seen (thus present in the history), the line is updated with the hour of his last stream.
 
+The insertion of the media in the history is done when you get to the media detail page and not when the video is launched.
+
 
 ----------------------------------------------------- 

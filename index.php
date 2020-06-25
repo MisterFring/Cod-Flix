@@ -43,11 +43,6 @@ if( $user_id == false ){
       contactPageWithoutAccount();
 
       break;
-
-    default :
-      homePage();
-
-      break;
   endswitch;
   }
   else {
@@ -97,6 +92,7 @@ else {
 
     endswitch;
   }
+  // failed to make a switch case with all those elseif
   elseif (isset($_GET['media'])) {
 
     mediaSheet();
@@ -128,6 +124,7 @@ else {
     deleteAllHistory();
 
   }
+
   else {
     mediaPage();
   }

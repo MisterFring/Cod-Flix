@@ -205,7 +205,7 @@ function getIdByEmail($email){
 
 function emailPlatform($subject, $from, $content) {
 
-  $recipient = "pierre.decrock@gmail.com";
+  $recipient = "contact@codflix.com";
   $subject =  $subject;
   $entete = "From: ".$from."" ;
    
