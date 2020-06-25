@@ -13,7 +13,7 @@ $historySeries = getHistorySeries($_SESSION['user_id']);
       <h2>Historique</h2>
     </div>
     <div class="col-sm">
-      <button class="btn btn-block bg-red"><a href="index.php?deleteAll">TOUT SUPPRIMER</a></button>
+      <button class="btn btn-block bg-light"><a href="index.php?deleteAll">TOUT SUPPRIMER</a></button>
     </div>
   </div>
 </div>
@@ -35,11 +35,11 @@ $historySeries = getHistorySeries($_SESSION['user_id']);
 		  		$media = getMediaById($value['media_id']);
 	  	?>
 	  		<tr>
-				<td><?= $media['title'] ?></td>
+				<th scope="row"><?= $media['title'] ?></th>
 				<td><?= $value['start_date'] ?></td>
 				<!-- <td><?= $value['finish_date'] ?></td>
 				<td><?= $value['watch_duration'] ?></td> -->
-				<td><button class="btn btn-block bg-red"><a href="index.php?delete=<?= $value['id']; ?>">Supprimer</a></button></td>
+				<td><button class="btn btn-block bg-light"><a href="index.php?delete=<?= $value['id']; ?>">Supprimer</a></button></td>
 
 	    	</tr>
 	    <?php } ?>
@@ -76,14 +76,14 @@ $historySeries = getHistorySeries($_SESSION['user_id']);
 		  		$media = getMediaById($season['media_id']);
 	  	?>
 	  		<tr>
-				<td><?= $episode['index_episode'] ?></td>
+				<th scope="row"><?= $episode['index_episode'] ?></th>
 				<td><?= $episode['title'] ?></td>
 				<td><?= $media['title'] ?></td>
 				<td><?= $season['title'] ?></td>
 				<td><?= $val['start_date'] ?></td>
 				<!-- <td><?= $val['finish_date'] ?></td>
 				<td><?= $val['watch_duration'] ?></td> -->
-				<td><button class="btn btn-block bg-red"><a href="index.php?delete=<?= $val['id']; ?>">Supprimer</a></button></td>
+				<td><button class="btn btn-block bg-light"><a href="index.php?delete=<?= $val['id']; ?>">Supprimer</a></button></td>
 
 	    	</tr>
 	    <?php } ?>

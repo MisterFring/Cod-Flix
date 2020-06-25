@@ -9,6 +9,19 @@ or by clicking on a media being a series ---
 if (!isset($_GET['media'])) {
 ?>
 <div class="row">
+    <div class="col-md-4">
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Genre
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+        </div>
+    </div>
+    
     <div class="col-md-4 offset-md-8">
         <form method="get">
             <div class="form-group has-btn">
@@ -21,9 +34,15 @@ if (!isset($_GET['media'])) {
     </div>
 </div>
 
+<!-- ***************************************************************************** -->
+<!-- Separation of films and series not yet optimized, the same foreach runs twice -->
+<!-- ***************************************************************************** -->
+
+<h3>Films</h3>
 <div class="media-list">
     <?php
     foreach( $medias as $media ):
+        if ($media['type']=='film'):
         ?>
         <a class="item" href="index.php?media=<?= $media['id']; ?>">
             <div class="video">
@@ -35,21 +54,43 @@ if (!isset($_GET['media'])) {
             <div class="title"><?= $media['title']; ?></div>
             <div class="release_date">
                 <?php
-                    if ($media['type']=='film') {
-                        $available = available($media ['release_date']);
-                        ($available) ? $msg = "Disponible depuis :<br>" : $msg = "Disponible le :<br>";
-                        echo $msg . $media ['release_date'] ;
-                    }
-                    else {
-                        $fetchSeasons = getSeasons($media['id']);
-                        $numberOfSeasons = count($fetchSeasons);
-                        echo ($numberOfSeasons > 1 ) ? ($numberOfSeasons.' Saisons') : $numberOfSeasons.' Saison';
-                        ;
-                    }
+                $available = available($media ['release_date']);
+                ($available) ? $msg = "Disponible depuis :<br>" : $msg = "Disponible le :<br>";
+                echo $msg . $media ['release_date'] ;
                 ?>
             </div>
         </a>
-    <?php endforeach; ?>
+    <?php
+        endif;
+    endforeach; ?>
+</div>
+
+
+<h3>Séries</h3>
+<div class="media-list">
+    <?php
+    foreach( $medias as $media ):
+        if ($media['type']=='series'):
+        ?>
+        <a class="item" href="index.php?media=<?= $media['id']; ?>">
+            <div class="video">
+                    <iframe allowfullscreen="" frameborder="0"
+                            src="<?= $media['trailer_url']; ?>" >
+                                
+                    </iframe>
+            </div>
+            <div class="title"><?= $media['title']; ?></div>
+            <div class="release_date">
+                <?php
+                $fetchSeasons = getSeasons($media['id']);
+                $numberOfSeasons = count($fetchSeasons);
+                echo ($numberOfSeasons > 1 ) ? ($numberOfSeasons.' Saisons') : $numberOfSeasons.' Saison';
+                ?>
+            </div>
+        </a>
+    <?php 
+        endif;
+    endforeach; ?>
 </div>
 
 

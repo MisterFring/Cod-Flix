@@ -174,7 +174,7 @@ function getSeasons($id){
 ********************************************************/
 function getEpisodes($id){
   $pdo = init_db();
-  $requete = $pdo->prepare('SELECT * FROM episodes WHERE season_id = ?');
+  $requete = $pdo->prepare('SELECT * FROM episodes WHERE season_id = ? ORDER BY index_episode');
 
   $requete->execute(array($id));
   $res = $requete->fetchAll();
