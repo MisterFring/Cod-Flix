@@ -20,14 +20,16 @@ $media_title = getMediaById($media_id)['title'];
 	<table class="table table-bordered table-hover">
 	  <thead class="thead-dark">
 	    <tr>
-			<th scope="col">Title</th>
-			<th scope="col">Summary</th>
-			<th scope="col">Duration</th>
+	    	<th scope="col">#</th>
+			<th scope="col">Titre</th>
+			<th scope="col">Description</th>
+			<th scope="col">Durée</th>
 	    </tr>
 	  </thead>
 	  <tbody>
 	  	<?php foreach ($episodes as $episode) {?>
 	  		<tr>
+	  			<td><?= $episode['index_episode'] ?></td>
 				<td><?= $episode['title'] ?></td>
 				<td><?= $episode['summary'] ?></td>
 				<td><?= $episode['duration'] ?><br><button><a href="index.php?episode=<?= $episode['id']; ?>">Stream</a></button></td>

@@ -22,12 +22,10 @@ if (!isset($_GET['media'])) {
         ?>
         <a class="item" href="index.php?media=<?= $media['id']; ?>">
             <div class="video">
-                <div>
                     <iframe allowfullscreen="" frameborder="0"
                             src="<?= $media['trailer_url']; ?>" >
                                 
                     </iframe>
-                </div>
             </div>
             <div class="title"><?= $media['title']; ?></div>
             <div class="release_date">
@@ -53,9 +51,9 @@ else {
         ?>
         <a class="item" href="index.php?season=<?= $season['id']; ?>">
             <div class="video">
-                <div>
+                
                     <img src="<?= $season['picture']; ?>" class="img-fluid" alt="Responsive image">
-                </div>
+                
             </div>
             <div class="title"><?= $season['title']; ?></div>
         </a>

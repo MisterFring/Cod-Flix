@@ -182,6 +182,16 @@ function getEpisodes($id){
 
   return $res;
 }
+function getEpisodeById($id){
+  $pdo = init_db();
+  $requete = $pdo->prepare('SELECT * FROM episodes WHERE id = ?');
+
+  $requete->execute(array($id));
+  $res = $requete->fetch();
+  $db = null;
+
+  return $res;
+}
 /*******************************************************
 * -------- GET SEASONS TITLE --------
 ********************************************************/
